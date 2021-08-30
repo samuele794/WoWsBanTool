@@ -5,13 +5,13 @@ import java.util.*
 
 
 plugins {
-    kotlin("jvm") version "1.5.21"
-    id("org.jetbrains.compose") version "1.0.0-alpha4-build321"
+    kotlin("jvm") version "1.5.30"
+    id("org.jetbrains.compose") version "1.0.0-alpha4-build328"
     // https://awesomeopensource.com/project/gmazzo/gradle-buildconfig-plugin
     id("com.github.gmazzo.buildconfig") version "3.0.2"
-    id("org.jetbrains.kotlin.plugin.noarg") version "1.5.21"
+    id("org.jetbrains.kotlin.plugin.noarg") version "1.5.30"
 
-    kotlin("plugin.serialization") version "1.5.21"
+    kotlin("plugin.serialization") version "1.5.30"
 }
 
 group = "it.github.samuele794"
