@@ -13,7 +13,8 @@ import androidx.compose.ui.unit.dp
 fun CodeInputScreen(
     codeTextValue: String,
     onTextChange: (String) -> Unit,
-    buttonClickedListener: () -> Unit
+    buttonClickedListener: () -> Unit,
+    adminClickedListener: () -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
@@ -31,6 +32,10 @@ fun CodeInputScreen(
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = buttonClickedListener) {
             Text(text = "Ricerca partita")
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(onClick = adminClickedListener){
+            Text(text = "Admin Mode")
         }
     }
 }

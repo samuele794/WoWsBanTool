@@ -6,8 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.window.Window
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.essenty.instancekeeper.getOrCreate
-import com.arkivanov.essenty.lifecycle.subscribe
 import navigation.Component
 import navigation.NavHostComponent
 import org.koin.core.component.KoinComponent
@@ -30,16 +28,20 @@ class CodeInputScreenComponent(
             state.code,
             onTextChange = {
                 state = state.copy(code = it)
+            },
+            buttonClickedListener = {
+                showStream = true
+            },
+            adminClickedListener = {
+                navHostComponent.navigateToAdminScreen()
             }
-        ) {
-            showStream = true
-        }
+        )
 
-        if (showStream){
+        if (showStream) {
             // TODO : DA SPOSTARE
             Window(onCloseRequest = {
                 showStream = false
-            }){
+            }) {
                 StreamDesktopTheme {
                     StreamScreenComponent(componentContext).render()
                 }

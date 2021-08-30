@@ -17,7 +17,6 @@ class SplashScreenComponent(
         SplashScreen()
 
         LaunchedEffect(Unit){
-            delay(2000)
             navHostComponent.navigateToCodeInputScreen()
         }
     }

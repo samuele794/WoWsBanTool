@@ -1,25 +1,31 @@
 package navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.extensions.compose.jetbrains.Children
+import com.arkivanov.decompose.pop
 import com.arkivanov.decompose.push
 import com.arkivanov.decompose.router
 import com.arkivanov.essenty.parcelable.Parcelable
 import view.codeinput.CodeInputScreenComponent
+import view.managment.menu.AdminMenuScreenComponent
+import view.managment.menu.clan.ClanMenuInsertScreenComponent
 import view.splash.SplashScreenComponent
 
 class NavHostComponent(
     componentContext: ComponentContext,
     windowState: WindowState
-) : Component, ComponentContext by componentContext {
+) : Component,  ComponentContext by componentContext {
 
     private val router = router<ScreenConfig, Component>(
         initialConfiguration = ScreenConfig.Splash,
-        childFactory = ::createScreenComponent
+        childFactory = ::createScreenComponent,
     )
+
+    fun onBackPressed(){
+        router.pop()
+    }
 
     private fun createScreenComponent(
         screenConfig: ScreenConfig,
@@ -32,6 +38,16 @@ class NavHostComponent(
             )
 
             is ScreenConfig.CodeInputScreen -> CodeInputScreenComponent(
+                componentContext,
+                this
+            )
+
+            is ScreenConfig.AdminMenuScreen -> AdminMenuScreenComponent(
+                componentContext,
+                this
+            )
+
+            is ScreenConfig.AdminMenuClanScreen -> ClanMenuInsertScreenComponent(
                 componentContext,
                 this
             )
@@ -49,8 +65,20 @@ class NavHostComponent(
         router.push(ScreenConfig.CodeInputScreen)
     }
 
+
+    fun navigateToAdminScreen() {
+        router.push(ScreenConfig.AdminMenuScreen)
+    }
+
+    fun navigateToClanSettings() {
+        router.push(ScreenConfig.AdminMenuClanScreen)
+    }
+
     private sealed class ScreenConfig : Parcelable {
         object Splash : ScreenConfig()
         object CodeInputScreen : ScreenConfig()
+
+        object AdminMenuScreen: ScreenConfig()
+        object AdminMenuClanScreen: ScreenConfig()
     }
 }
