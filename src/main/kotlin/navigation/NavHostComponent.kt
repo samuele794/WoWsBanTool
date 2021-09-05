@@ -12,6 +12,7 @@ import view.codeinput.CodeInputScreenComponent
 import view.managment.menu.AdminMenuScreenComponent
 import view.managment.menu.clan.ClanMenuInsertScreenComponent
 import view.splash.SplashScreenComponent
+import view.stream.manage.StreamManageScreenComponent
 
 class NavHostComponent(
     componentContext: ComponentContext,
@@ -51,6 +52,10 @@ class NavHostComponent(
                 componentContext,
                 this
             )
+
+            is ScreenConfig.StreamManageScreen -> StreamManageScreenComponent(
+                componentContext
+            )
         }
     }
 
@@ -74,11 +79,17 @@ class NavHostComponent(
         router.push(ScreenConfig.AdminMenuClanScreen)
     }
 
+    fun navigateToStreamManage() {
+        router.push(ScreenConfig.StreamManageScreen)
+    }
+
     private sealed class ScreenConfig : Parcelable {
         object Splash : ScreenConfig()
         object CodeInputScreen : ScreenConfig()
 
-        object AdminMenuScreen: ScreenConfig()
-        object AdminMenuClanScreen: ScreenConfig()
+        object AdminMenuScreen : ScreenConfig()
+        object AdminMenuClanScreen : ScreenConfig()
+
+        object StreamManageScreen : ScreenConfig()
     }
 }

@@ -4,11 +4,8 @@ import androidx.compose.ui.window.rememberWindowState
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.extensions.compose.jetbrains.lifecycle.LifecycleController
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import data.AwsDynamoRepository
-import data.WarshipRepository
+import di.repositoryModule
 import di.viewModelModule
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import navigation.NavHostComponent
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
@@ -19,7 +16,7 @@ fun main() {
 
     startKoin {
         printLogger(Level.DEBUG)
-        modules(viewModelModule)
+        modules(viewModelModule, repositoryModule)
     }
 
     application {

@@ -1,6 +1,5 @@
 package view.stream
 
-import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,7 +15,6 @@ import androidx.compose.ui.res.loadImageBitmap
 import androidx.compose.ui.res.useResource
 import androidx.compose.ui.unit.dp
 
-@Preview
 @Composable
 fun StreamScreen() {
     // https://fvilarino.medium.com/creating-a-viewpager-in-jetpack-compose-332d6a9181a5
@@ -52,7 +50,10 @@ fun StreamScreen() {
                         modifier = Modifier.width(256.dp).height(256.dp)
                     )
 
-                    Column(modifier = Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
                         Text("$item $index")
                     }
                 }
@@ -69,8 +70,11 @@ fun StreamScreen() {
                         modifier = Modifier.width(256.dp).height(256.dp)
                     )
 
-                    Column(modifier = Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                        
+                    Column(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+
 
                         Text("$item $index", Modifier.align(Alignment.CenterHorizontally))
                     }
@@ -79,53 +83,4 @@ fun StreamScreen() {
 
         }
     }
-
-
-//    Column(
-//        modifier = Modifier
-//            .background(Color.Gray)
-//            .fillMaxSize()
-//            .padding(start = 16.dp, end = 16.dp),
-//        horizontalAlignment = Alignment.Start,
-//        verticalArrangement = Arrangement.Center,
-//    ) {
-//        Image(
-//            bitmap = useResource("takaoSmall.png", ::loadImageBitmap),
-//            "logo",
-//            modifier = Modifier.width(256.dp).height(256.dp)
-//                .align(Alignment.CenterHorizontally)
-//        )
-//
-//        Spacer(modifier = Modifier.height(16.dp))
-//
-//        Text(
-//            text = "Test",
-//            fontSize = 32.sp,
-//            fontWeight = FontWeight.Bold
-//        )
-//    }
-//
-//    Column(
-//        modifier = Modifier
-//            .background(Color.Gray)
-//            .fillMaxSize(0.5F)
-//            .padding(start = 16.dp, end = 16.dp),
-//        horizontalAlignment = Alignment.End,
-//        verticalArrangement = Arrangement.Center,
-//    ) {
-//        Image(
-//            bitmap = useResource("takaoSmall.png", ::loadImageBitmap),
-//            "logo",
-//            modifier = Modifier.width(256.dp).height(256.dp)
-//                .align(Alignment.CenterHorizontally)
-//        )
-//
-//        Spacer(modifier = Modifier.height(16.dp))
-//
-//        Text(
-//            text = "Test",
-//            fontSize = 32.sp,
-//            fontWeight = FontWeight.Bold
-//        )
-//    }
 }

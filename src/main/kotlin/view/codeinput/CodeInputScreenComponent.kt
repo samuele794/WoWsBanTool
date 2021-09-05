@@ -30,7 +30,8 @@ class CodeInputScreenComponent(
                 state = state.copy(code = it)
             },
             buttonClickedListener = {
-                showStream = true
+//                showStream = true
+                navHostComponent.navigateToStreamManage()
             },
             adminClickedListener = {
                 navHostComponent.navigateToAdminScreen()
