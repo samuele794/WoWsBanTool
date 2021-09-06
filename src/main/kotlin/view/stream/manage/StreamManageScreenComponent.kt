@@ -1,7 +1,8 @@
 package view.stream.manage
 
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.toMutableStateList
 import com.arkivanov.decompose.ComponentContext
 import data.WarshipRepository
 import data.model.Warship
@@ -13,10 +14,9 @@ class StreamManageScreenComponent(
     private val componentContext: ComponentContext
 ) : Component, KoinComponent, ComponentContext by componentContext {
 
-    private var showAlert by mutableStateOf(false)
     private val warshipRepository by inject<WarshipRepository>()
 
-    val banRow = arrayOfNulls<BanRow>(7).apply {
+    private val banRow = arrayOfNulls<BanRow>(7).apply {
         fill(BanRow())
     }.filterNotNull().toMutableStateList()
 
@@ -26,9 +26,6 @@ class StreamManageScreenComponent(
 
         StreamManageScreen(
             banList = banRow,
-            onSelectShipClicked = {
-                showAlert = true
-            },
             shipList = warshipRepository.shipList
         )
     }
